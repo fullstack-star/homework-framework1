@@ -1,0 +1,14 @@
+#marquee img {
+  width: 400px;
+  height: 300px;
+  vertical-align: top;
+}
+
+#marquee {
+  display: flex;
+  align-items: flex-start;
+  transform: all 0.5s;
+  width: 400px;
+  overflow: hidden;
+  position: relative;
+}
