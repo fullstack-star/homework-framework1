@@ -1,0 +1,76 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+a{
+    text-decoration: none;
+}
+/* 轮播图片 */
+#marquee {
+    position: relative;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.marquee-wrapper {
+    position: relative;
+    margin: 0 auto;
+    height: 100%;
+}
+.marquee-wrapper a{
+	display: block;
+    float: left;
+    height: 100%;
+}
+.marquee-wrapper a img{
+    width: 1000px;
+    height: 100%;
+}
+/* arrow */
+.marquee-arrow{
+	width: 100%;
+	height: 40px;
+	position: absolute;
+	left: 0;
+	bottom: 50%;
+	margin-bottom: -20px;
+}
+.arrow-item{
+	font-size: 25px;
+	font-weight: bold;
+	color: #fff;
+	background-color: rgba(0,0,0,.6);
+    opacity: .6;
+}
+.arrow-item:hover{
+	opacity: .8;
+}
+.prev{
+	position: absolute;
+	left: 0;
+	padding:10px 7px 10px 7px;
+}
+.next{
+	position: absolute;
+    right: 0;
+    padding:10px 7px 10px 7px;
+}
+/* dot */
+.marquee-dots{
+	width: 100%;
+	height: 30px;
+	line-height: 30px;
+	position: absolute;
+	bottom: 10px;
+	text-align: center;
+}
+.dots-item{
+	display: inline-block;
+	width:10px;
+	height: 10px;
+	background-color: #999;
+	border-radius:50%;
+	margin-right: 10px;
+}
+.dots-active{
+	background-color: #fff;
+}
