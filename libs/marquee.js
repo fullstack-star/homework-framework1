@@ -30,6 +30,7 @@ $.fn.marquee = function (ops) {
   let currentTranslateX = 0 // 当前轮播的滚动
   const imgs = this.find("img")
   const imgsLen = imgs.length // 总共有多少个图片
+  let time = null
 
   // 设置fancybox的点击效果
   let childs = setFancyBox(Array.from(imgs))
@@ -58,6 +59,10 @@ $.fn.marquee = function (ops) {
     $(this).css({
       transform: 'translateX(' + p + 'px)'      // 通过index换算出我们需要的位移，动态传入
     })
+    if (time) {
+      clearInterval(time)
+      start()
+    }
   })
   rightBtn.on('click', () => {
     let p
@@ -69,13 +74,23 @@ $.fn.marquee = function (ops) {
     $(this).css({
       transform: 'translateX(' + p + 'px)'      // 通过index换算出我们需要的位移，动态传入
     })
+    if (time) {
+      clearInterval(time)
+      start()
+    }
   })
-  // 如果需要有设置轮播的时间
-  if (times) {
-    setInterval(() => {
-      rightBtn.trigger('click')
-    }, times)
+
+  let start = () => {
+    // 如果需要有设置轮播的时间
+    if (times) {
+      time = setInterval(() => {
+        rightBtn.trigger('click')
+      }, times)
+    }
   }
+
+  start()
+
 }
 
 function setFancyBox(imgs) {
