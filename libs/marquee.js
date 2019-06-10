@@ -70,6 +70,12 @@ $.fn.marquee = function (ops) {
       transform: 'translateX(' + p + 'px)'      // 通过index换算出我们需要的位移，动态传入
     })
   })
+  // 如果需要有设置轮播的时间
+  if (times) {
+    setInterval(() => {
+      rightBtn.trigger('click')
+    }, times)
+  }
 }
 
 function setFancyBox(imgs) {
