@@ -1,1 +1,3 @@
-$('#marquee').marquee()
+$('#marquee').marquee({
+    autoPlay: 2000
+})

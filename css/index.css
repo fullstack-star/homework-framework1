@@ -1,0 +1,77 @@
+body, div, ul, li {
+    margin: 0;
+    padding: 0;
+}
+ul,
+li {
+    list-style-type: none;
+}
+img {
+    vertical-align: middle;
+}
+body {
+    background: #f2f2f2;
+    text-align: center;
+    font: 12px/20px Arial;
+}
+.container {
+    position: relative;
+    width: 492px;
+    height: 172px;
+    background: #fff;
+    border-radius: 5px;
+    border: 8px solid #fff;
+    margin: 10px auto;
+}
+.container .wrap {
+    position: relative;
+    width: 490px;
+    height: 170px;
+    overflow: hidden;
+    border: 1px solid #ccc;
+}
+.container .wrap li {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 490px;
+    height: 170px;
+    display: none;
+}
+.container .wrap li.current {
+    display: block;
+}
+.btn-prev,
+.btn-next {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: 50%;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, .7);
+    transform: translate(0, -50%);
+}
+.btn-prev {
+    left: 5px;
+}
+.btn-next {
+    right: 5px;
+}
+.btn-prev:before,
+.btn-next:after {
+    content: ' ';
+    position: absolute;
+    left: 3px;
+    top: 10px;
+    width: 0;
+    height: 0;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent rgba(255, 255, 255, .6) transparent transparent;
+    transform: rotate(0deg);
+}
+.btn-next:after {
+    left: auto;
+    right: 3px;
+    transform: rotate(180deg);
+}
