@@ -51,18 +51,14 @@ $.fn.marquee = function (ops) {
   // 添加按钮的点击事件
   leftBtn.on('click', () => {
     let p
+    // 根据边界计算出所需要移动的值
     if (currentTranslateX === 0) {
       p = currentTranslateX = -(imgsLen - 1) * width
     } else {
       p = currentTranslateX += width
     }
-    $(this).css({
-      transform: 'translateX(' + p + 'px)'      // 通过index换算出我们需要的位移，动态传入
-    })
-    if (time) {
-      clearInterval(time)
-      start()
-    }
+    transform(this, p)
+    clearTimeAndStart()
   })
   rightBtn.on('click', () => {
     let p
@@ -71,13 +67,8 @@ $.fn.marquee = function (ops) {
     } else {
       p = currentTranslateX -= width
     }
-    $(this).css({
-      transform: 'translateX(' + p + 'px)'      // 通过index换算出我们需要的位移，动态传入
-    })
-    if (time) {
-      clearInterval(time)
-      start()
-    }
+    transform(this, p)
+    clearTimeAndStart()
   })
 
   let start = () => {
@@ -89,8 +80,20 @@ $.fn.marquee = function (ops) {
     }
   }
 
-  start()
+  let clearTimeAndStart = () => {
+    if (time) {
+      clearInterval(time)
+      start()
+    }
+  }
 
+  start()
+}
+
+function transform(dom, p) {
+  $(dom).css({
+    transform: 'translateX(' + p + 'px)'
+  })
 }
 
 function setFancyBox(imgs) {
