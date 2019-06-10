@@ -1,6 +1,36 @@
-<div id="marquee">
-  <img>
-  <img>
-  <img>
-</div>
-<script src="./libs/jquery.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>轮播滚动</title>
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="libs/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+  <div id="marquee">
+    <div class="prev"></div>
+    <div class="content">
+      <a  href="./img/1.jpg" data-fancybox>
+        <img src="./img/1.jpg" alt="" srcset="" >
+      </a>
+      <a  href="./img/2.jpg" data-fancybox>
+        <img src="./img/2.jpg" alt="" srcset="">
+      </a>
+      <a  href="./img/3.jpg" data-fancybox>
+        <img src="./img/3.jpg" alt="" srcset="">
+      </a>
+      <a  href="./img/4.webp" data-fancybox>
+        <img src="./img/4.webp" alt="" srcset="">
+      </a>
+    </div>
+    <div class="next"></div>
+  </div>
+  <script src="./libs/jquery.js"></script>
+  <script src="./libs/jquery.fancybox.min.js"></script>
+  <script src="./libs/marquee.js"></script>
+  <script src="./js/main.js"></script>
+</body>
+</html>
