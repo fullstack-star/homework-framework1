@@ -5,3 +5,4 @@ $('#marquee').marquee({
     showArrow: true,
     showDot: true
 });
+$('.fancybox').fancybox();
