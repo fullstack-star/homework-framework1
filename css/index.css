@@ -1,0 +1,37 @@
+#marquee{
+  position: relative;
+  width: 600px;
+  height: 150px;
+  margin: 0 auto;
+  border: 1px dashed red;
+  overflow: hidden;
+}
+div{
+  margin: 0;
+  padding: 0;
+}
+#marquee .wrap{
+  position: relative;
+  display: flex;
+  left: -600px;
+  height: 100%;
+}
+#marquee .wrap >img{
+  flex: 1;
+  height: 100%;
+}
+#marquee>span{
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 32px;
+  font-weight: 900;
+  color: #fff;
+  user-select: none;
+  cursor: pointer;
+}
+#marquee>span:last-child{
+  left: auto;
+  right: 10px;
+}
