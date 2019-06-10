@@ -1,1 +1,6 @@
-$('#marquee').marquee()
+$(function () {
+    $('#marquee').marquee({
+        width: 512
+    });
+});
+

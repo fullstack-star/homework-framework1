@@ -1,0 +1,38 @@
+#marquee {
+    border: 1px solid #999999;
+    position: relative;
+}
+#marquee .marquee-wrap {
+    height: 100%;
+    position: relative;
+}
+#marquee .marquee-thumbnail {
+    width: 100%;
+    outline: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+}
+#marquee .marquee-thumbnail>img {
+    width: 100%;
+}
+#marquee .marquee-btn {
+    position: absolute;
+    top: 0;
+    border: none;
+    background: transparent;
+    height: 100%;
+    font-size: 20px;
+    outline: none;
+    z-index: 9999;
+}
+#marquee .marquee-btn.marquee-btn__prev {
+    left: 0;
+}
+#marquee .marquee-btn.marquee-btn__next {
+    right: 0;
+}
