@@ -1,0 +1,53 @@
+.marquee-container {
+    display: block;
+    overflow: hidden;
+    position: relative;
+}
+
+.marquee-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 300%;
+    height: 100%;
+}
+
+.marquee-container a {
+    box-sizing: border-box;
+    display: block;
+    float: left;
+    width: calc(100% /3);
+    padding: 4px;
+}
+
+
+.marquee-container::after {
+    content: "";
+    display: block;
+    font-size: 0;
+    margin: 0;
+    padding: 0;
+    clear: both;
+}
+
+.marquee-pagenation {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 60px;
+}
+
+.marquee-pagenation i {
+    width: 16px;
+    height: 16px;
+    margin: 0 6px;
+    border-radius: 8px;
+    background-color: white;
+    cursor: pointer;
+}

@@ -1,6 +1,36 @@
-<div id="marquee">
-  <img>
-  <img>
-  <img>
-</div>
-<script src="./libs/jquery.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>jQuery marquee</title>
+  <link rel="stylesheet" href="./css/normalize.css">
+  <link rel="stylesheet" href="./libs/jquery.fancybox.css">
+  <link rel="stylesheet" href="./libs/marquee.css">
+  <link rel="stylesheet" href="./css/main.css">
+</head>
+
+<body>
+  <div id="marquee" class="marquee">
+
+    <div class="marquee-content">
+      <a data-fancybox="gallery" href="./imgs/Daenerys_Targaryen.jpeg">
+        <img src="./imgs/Daenerys_Targaryen.jpeg" alt="龙妈">
+      </a>
+      <a data-fancybox="gallery" href="./imgs/Jon_Snow.jpeg">
+        <img src="./imgs/Jon_Snow.jpeg" alt="雪诺">
+      </a>
+      <a data-fancybox="gallery" href="./imgs/Tyrion_Lannister.jpeg">
+        <img src="./imgs/Tyrion_Lannister.jpeg" alt="小恶魔">
+      </a>
+    </div>
+  </div>
+  <script src="./libs/jquery-3.4.1.js"></script>
+  <script src="./libs/jquery.fancybox.js"></script>
+  <script src="./libs/marquee.js"></script>
+  <script src="./js/main.js"></script>
+</body>
+
+</html>

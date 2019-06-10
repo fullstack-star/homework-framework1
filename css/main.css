@@ -1,0 +1,14 @@
+body {
+    background: rgb(55, 55, 55)
+}
+
+.marquee {
+    margin: 50px auto;
+    width: 300px;
+    height: 384px;
+    overflow: hidden;
+}
+
+.marquee img {
+    width: 100%;
+}
