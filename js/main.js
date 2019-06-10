@@ -1,1 +1,3 @@
-$('#marquee').marquee()
+$('#marquee').marquee({
+  width: 400
+})

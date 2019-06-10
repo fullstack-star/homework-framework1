@@ -23,9 +23,13 @@ const directionType = {
 
 // 轮播插件的实现
 $.fn.marquee = function (ops) {
-  const { times = 1000 } = ops || {} // 用户传入参数
-
+  const { times = 1000, width } = ops || {} // 用户传入参数
+  if (!width) {
+    return
+  }
+  let currentTranslateX = 0 // 当前轮播的滚动
   const imgs = this.find("img")
+  const imgsLen = imgs.length // 总共有多少个图片
 
   // 设置fancybox的点击效果
   let childs = setFancyBox(Array.from(imgs))
@@ -36,12 +40,36 @@ $.fn.marquee = function (ops) {
   let rightBtn = $(rightBtnStr)
   let leftBtn = $(leftBtnStr)
   // 设置左右箭头的样式
-  rightBtn = _setBtnCss(rightBtn, directionType.right, 22)
-  leftBtn = _setBtnCss(leftBtn, directionType.left, 22)
+  rightBtn = setBtnCss(rightBtn, directionType.right, 22)
+  leftBtn = setBtnCss(leftBtn, directionType.left, 22)
 
   // 添加左右按钮
   this.parent().append(rightBtn)
   this.parent().append(leftBtn)
+
+  // 添加按钮的点击事件
+  leftBtn.on('click', () => {
+    let p
+    if (currentTranslateX === 0) {
+      p = currentTranslateX = -(imgsLen - 1) * width
+    } else {
+      p = currentTranslateX += width
+    }
+    $(this).css({
+      transform: 'translateX(' + p + 'px)'      // 通过index换算出我们需要的位移，动态传入
+    })
+  })
+  rightBtn.on('click', () => {
+    let p
+    if (currentTranslateX <= -(imgsLen - 1) * width) {
+      p = currentTranslateX = 0
+    } else {
+      p = currentTranslateX -= width
+    }
+    $(this).css({
+      transform: 'translateX(' + p + 'px)'      // 通过index换算出我们需要的位移，动态传入
+    })
+  })
 }
 
 function setFancyBox(imgs) {
@@ -56,7 +84,7 @@ function setFancyBox(imgs) {
   })
 }
 
-function _setBtnCss(btnDOM, direction, width) {
+function setBtnCss(btnDOM, direction, width) {
   if (!btnDOM || !width) {
     return
   }
