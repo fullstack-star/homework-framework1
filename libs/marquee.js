@@ -15,6 +15,11 @@ const leftBtnStr = `<button class="fancybox-button fancybox-button--arrow_left" 
     </svg>
   </div>
 </button>`
+// 方向值的枚举
+const directionType = {
+  left: 0,
+  right: 1,
+}
 
 // 轮播插件的实现
 $.fn.marquee = function (ops) {
@@ -27,6 +32,16 @@ $.fn.marquee = function (ops) {
   // 清空原有的图片，添加带有点击放大效果的图片
   this.empty()
   this.append(childs)
+  // 创建左右箭头的dom
+  let rightBtn = $(rightBtnStr)
+  let leftBtn = $(leftBtnStr)
+  // 设置左右箭头的样式
+  rightBtn = _setBtnCss(rightBtn, directionType.right, 22)
+  leftBtn = _setBtnCss(leftBtn, directionType.left, 22)
+
+  // 添加左右按钮
+  this.parent().append(rightBtn)
+  this.parent().append(leftBtn)
 }
 
 function setFancyBox(imgs) {
@@ -39,4 +54,18 @@ function setFancyBox(imgs) {
     aEl.append(d)
     return aEl
   })
+}
+
+function _setBtnCss(btnDOM, direction, width) {
+  if (!btnDOM || !width) {
+    return
+  }
+  btnDOM.css("position", "absolute")
+  if (direction === directionType.left) {
+    btnDOM.css("left", "0")
+  } else {
+    btnDOM.css("right", "0")
+  }
+  btnDOM.css("top", `calc(50% - ${width}px)`)
+  return btnDOM
 }

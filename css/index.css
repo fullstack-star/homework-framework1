@@ -4,11 +4,14 @@
   vertical-align: top;
 }
 
-#marquee {
-  display: flex;
-  align-items: flex-start;
-  transform: all 0.5s;
+.marquee-container {
   width: 400px;
   overflow: hidden;
   position: relative;
+}
+
+#marquee {
+  display: flex;
+  align-items: flex-start;
+  transition: all 1s;
 }
