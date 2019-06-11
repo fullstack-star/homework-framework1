@@ -1,0 +1,48 @@
+.promo:after, .promo:before{
+    content: " ";
+    display: table;
+}
+.promo:after{
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+    clear: both;
+}
+html,body{
+    width:100%;
+}
+.marquee {
+    overflow: hidden;
+    margin: 20px auto;
+}
+.marquee .marquee-wrap {
+    width: 100%;
+    overflow: hidden;
+    height: 100%;
+    position: relative;
+}
+
+.marquee .marquee-inner{
+    overflow: hidden;
+    transition-duration: 0.3s;
+    transform: translate3d(0px, 0px, 0px);
+    backface-visibility: hidden;
+    left: 0;
+    opacity: 1;
+}
+.marquee .marquee-thumbnail{
+    float: left;
+    overflow: hidden;
+    width: 520px;
+    display: block;
+    visibility: visible;
+}
+
+.marquee .marquee-ft{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top:50%;
+    left:0;
+}
