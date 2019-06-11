@@ -1,6 +1,33 @@
-<div id="marquee">
-  <img>
-  <img>
-  <img>
-</div>
-<script src="./libs/jquery.js"></script>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Index</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  <link rel="stylesheet" href="./css/shuffing.css">
+</head>
+
+<body>
+  <div id="marquee">
+    <span class="control-btn prev">
+      &lt;
+    </span> <a href="./imgs/1.jpg"><img src="./imgs/1.jpg" alt="" /></a>
+    <span class="control-btn next">
+      &gt;
+    </span>
+  </div>
+  <script src="./libs/jquery.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  <script src="./libs/marquee.js"></script>
+  <script charset="utf-8">
+    var data = ['./imgs/1.jpg', './imgs/2.jpg', './imgs/3.jpg', './imgs/4.jpg']
+    var options = {
+      interval:2000
+    }
+    $("#marquee").marquee(data,options)
+  </script>
+</body>
+
+</html>
