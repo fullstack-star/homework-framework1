@@ -1,6 +1,81 @@
-<div id="marquee">
-  <img>
-  <img>
-  <img>
-</div>
-<script src="./libs/jquery.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="./css/jquery.fancybox.min.css">
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		li {
+			list-style: none
+		}
+		.marquee-wrapper {
+			width: 540px;
+		}
+		.marquee-wrapper .arrow,
+		.marquee-wrapper .marquee
+		{
+			display: inline-block;
+			vertical-align: middle;
+		}
+		.marquee {
+			width: 500px;
+			height: 500px;
+			overflow: hidden;
+		}
+		ul.marquee > li,
+		ul.marquee > li > a,
+		ul.marquee > li > a > img
+		{
+			width: 500px;
+			height: 500px;
+		}
+		ul.marquee > li {
+			display: none;
+		}
+		ul.marquee > li.active {
+			display: block;
+		}
+		ul.marquee > li > a {
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<div id="marquee" class='marquee-wrapper'>
+		<a class='arrow left' href="javascript:void(0)">&lt;</a>
+		<ul class='marquee'>
+			<li>
+			  <a data-fancybox='gallery' href="./images/1.jpg">
+			  	<img src="./images/1.jpg">
+			  </a>
+			</li>
+			<li>
+			  <a data-fancybox='gallery' href="./images/2.jpg">
+			  	<img src="./images/2.jpg">
+			  </a>
+			</li>
+			<li>
+			  <a data-fancybox='gallery' href="./images/3.jpg">
+			  	<img src="./images/3.jpg">
+			  </a>
+			</li>
+			<li>
+			  <a data-fancybox='gallery' href="./images/4.jpg">
+			  	<img src="./images/4.jpg">
+			  </a>
+			</li>
+		</ul>
+		<a class='arrow right' href="javascript:void(0)">&gt;</a>
+	</div>
+	<script src="./libs/jquery.js"></script>
+	<script src="./libs/jquery.fancybox.min.js"></script>
+	<script src="./libs/marquee.js"></script>
+	<script>
+		$('#marquee').marquee();
+	</script>
+</body>
+</html>
