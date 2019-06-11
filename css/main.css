@@ -1,0 +1,54 @@
+#marquee {
+  position: relative;
+  width: 300px;
+  height: 200px;
+  margin: 0 auto;
+}
+
+#marquee > a {
+  position: absolute;
+  height: 100%;
+}
+
+#marquee > a > img {
+  width: 100%;
+  height: 100%;
+}
+
+.next, .prev {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  transform: translateY(-50%);
+  top: 50%;
+  width: 38px;
+  height: 28px;
+  background: rgba(0,0,0,0.5);
+}
+
+.next {
+  right: 0;
+}
+
+.prev {
+  left: 0;
+}
+
+/*箭头*/
+.left-arrow, .right-arrow {
+  width: 0;
+  height: 0;
+  display: block;
+  border-top: 10px transparent dashed;
+  border-bottom: 10px transparent dashed;
+  overflow: hidden;
+}
+
+.left-arrow {
+  border-right: 20px solid #ccc;
+}
+.right-arrow {
+  left: 1px;
+  border-left: 20px solid #ccc;
+}
