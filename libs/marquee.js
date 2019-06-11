@@ -3,13 +3,13 @@ $.fn.marquee = function(opt) {
   // 配置默认值
 	let elewidth = opt ? opt.width : document.body.clientWidth;
 	let eleheight = opt ? opt.height : document.body.clientHeight;
-	let lazytime = opt ? opt.lazytime : 500;
+	let lazytime = opt ? opt.lazytime : 1000;
 	let autoplay = opt ? opt.autoplay : true;
-	let pageshow = opt ? opt.pageshow : 'none';  // none ? dot ? number
+	let pageshow = opt ? opt.pageshow : 'dot';  // none ? dot ? number
 	let direction = opt ? opt.direction : 'normal'; // normal 横向 ？ horizon 纵向
 	let oft = 0;
 
-	let ele = $(this);
+	let ele = $(this);  // 获取的元素
 	if (ele.length > 0) {
 		let eleChildren = ele.children();
 		ele.append('<div class="inner"></div>');  // 增加一个元素包裹
@@ -20,14 +20,51 @@ $.fn.marquee = function(opt) {
 			position: 'relative',  // page
 			flexDirection: direction == 'normal' ? 'row' : 'column'
 		})
-		inner.children('img').css({width:'100%'});
-		inner.children('img').popup();
+		inner.children('img').on('click', function() {   // img 绑定popup方法
+			$(this).popup();
+		});
 		// 设置基础样式
 		let horizontalHeight = inner.children('img').height()
 		ele.css({
 			width: elewidth,
 			height: direction == 'normal' ? eleheight : horizontalHeight,
 			overflow: 'hidden',
+		})
+
+		// 添加左右两边的方向键
+		ele.append('<div class="arrow leftArrow"> < </div>'); // 左边的方向键
+		ele.append('<div class="arrow rightArrow"> > </div>'); // 右边的方向键
+		$('.arrow').css('top', inner.children('img').height() / 2);
+    // 方向键触发
+		$('.leftArrow').on('click', function() {  // 只针对direction为normal的情况
+			console.log(t);
+			clearInterval(t);
+			if(oft <= 0 - elewidth ) {
+				oft += elewidth; // 跳转到对应的图片
+				moveRow(inner,oft,lazytime);
+				pageChange(oft/elewidth, pageshow);
+				if(autoplay) {
+					t = setInterval(function() {
+						oft -= elewidth;
+						move(inner,oft,lazytime,eleLen,elewidth,pageshow);
+					}, 2*lazytime);
+				}
+			}
+		})
+		$('.rightArrow').on('click', function() {  // 只针对direction为normal的情况
+			clearInterval(t);
+			if(oft >= 0 - (eleLen-2) * elewidth ) {
+				oft -=  elewidth; // 跳转到对应的图片
+				moveRow(inner,oft,lazytime);
+				pageChange(oft/elewidth, pageshow);
+				if(autoplay) {
+					t = setInterval(function() {
+						oft -= elewidth;
+						move(inner,oft,lazytime,eleLen,elewidth,pageshow);
+					}, 2*lazytime);
+				}
+			}
+
 		})
 		// 动起来
     let eleLen = inner.children().length;
@@ -90,10 +127,7 @@ $.fn.marquee = function(opt) {
 				}
 			})
 		}
-
   }
-
-
 }
 
 // 横向滚动 + 加页码效果
@@ -116,7 +150,6 @@ function moveHorizon(ele, offset, time, length, height, pageshow) {
 		clearInterval(t);
 	}
 }
-
 
 // 根据偏移量计算page，并显示样式
 function pageChange(index, pageshow) {
