@@ -1,6 +1,6 @@
 $.fn.marquee = function(params) {
     var _params = params || {};
-    var $marquee = $(this);
+    var $marquee = this;
     var $inner = $marquee.find('.marquee-inner');
     var imgList = _params.imgList || [];
     var WIDTH = _params.width || 520;
@@ -107,4 +107,6 @@ $.fn.marquee = function(params) {
     }
 
     render();
+
+    return $marquee;
 };
