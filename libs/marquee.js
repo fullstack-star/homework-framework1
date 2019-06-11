@@ -10,6 +10,7 @@ $.fn.marquee = function() {
   this.find('.wrap').css('width', this.width() * (childrens.length+2) + 'px')
   var pageEl = '<span class=prev><</span class=next><span class=next>></span>'
   this.append(pageEl)
+  
   this.children('span').click(function() {
     if (!canSwiper) return
     canSwiper = false
@@ -35,6 +36,7 @@ $.fn.marquee = function() {
       })
     }
   })
+  // me.find('img').fancybox()
   // 可翻页
   // popup when click
   // 可以用 fancybox
