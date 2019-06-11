@@ -1,6 +1,36 @@
-<div id="marquee">
-  <img>
-  <img>
-  <img>
-</div>
-<script src="./libs/jquery.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>image slide show</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+    <link rel="stylesheet" href="./css/marquee.css">
+  </head>
+
+  <body>
+    <div id="marquee">
+      <a data-marquee href="https://via.placeholder.com/600x400?text=1">
+        <img src="https://via.placeholder.com/300x200?text=1">
+      </a>
+      <a data-marquee href="https://via.placeholder.com/600x400?text=2">
+        <img src="https://via.placeholder.com/300x200?text=2">
+      </a>
+      <a data-marquee href="https://via.placeholder.com/600x400?text=3">
+        <img src="https://via.placeholder.com/300x200?text=3">
+      </a>
+      
+    </div>
+    
+
+    <script src="./libs/jquery.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+    <script src="./libs/marquee.js"></script>
+    <script src="./js/main.js"></script>
+  </body>
+
+</html>
