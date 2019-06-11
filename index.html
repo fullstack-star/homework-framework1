@@ -1,6 +1,40 @@
-<div id="marquee">
-  <img>
-  <img>
-  <img>
-</div>
-<script src="./libs/jquery.js"></script>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" name="viewport">
+  <title>幻灯片插件</title>
+  <link type="text/css" rel="styleSheet" href="./css/marquee.css" />
+
+</head>
+
+<body>
+
+  <div class="container" id="marquee">
+    <div class="list">
+      <img class="images" src="images/01.jpg" alt="1" />
+      <img class="images" src="images/02.jpg" alt="2" />
+      <img class="images" src="images/03.jpg" alt="3" />
+      <img class="images" src="images/04.jpg" alt="4" />
+      <img class="images" src="images/05.jpg" alt="5" />
+    </div>
+    <div class="pointer">
+      <span index="1" class="on"></span>
+      <span index="2"></span>
+      <span index="3"></span>
+      <span index="4"></span>
+      <span index="5"></span>
+    </div>
+    <a href="#" class="arrow left">></a>
+    <a href="#" class="arrow right">
+      <</a> </div> <div id="outerdiv">
+        <div id="innerdiv">
+          <img id="bigimg" />
+        </div>
+  </div>
+  <script type="text/javascript" src="./libs/jquery.js"></script>
+  <script type="text/javascript" src="./libs/marquee.js"></script>
+  <script type="text/javascript" src="./js/main.js"></script>
+</body>
+
+</html>
