@@ -1,0 +1,26 @@
+#marquee{
+  width: 480px;
+  height: 360px;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+}
+#marquee a{
+  display: block;
+}
+#marquee img{
+  width: 100%;
+  height: 100%;
+}
+
+#marquee .fancybox-button{
+  position: absolute;
+  top:40%;
+  background: rgba(30,30,30,.2)
+}
+#marquee .fancybox-button--arrow_left{
+  left:0;
+}
+#marquee .fancybox-button--arrow_right{
+  right:0;
+}
