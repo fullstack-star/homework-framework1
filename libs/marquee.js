@@ -2,9 +2,9 @@
  * @param {number} options.width 宽度
  * @param {number} options.height 高度
  * @param {number} options.speed 轮播滑动速度
- * @param {boolean} isAuto 是否自动播放
  * @param {boolean} showArrow 是否显示切换箭头
  * @param {boolean} showDot 是否显示切换圆点
+ * @param {boolean} isAuto 是否自动播放
  */
 $.fn.marquee = function(options) {
     var temp = {
@@ -32,10 +32,15 @@ $.fn.marquee = function(options) {
     }
 
     if(options.isAuto) {
-        temp.timer = setInterval(() => {
-            temp.index += 1
-            playSlide(temp)
-        }, 3000)
+        autoplay(temp)
+
+        $(this).hover(function() {
+            // 鼠标移入
+            clearInterval(temp.timer)
+        }, function() {
+            // 鼠标移出
+            autoplay(temp)
+        })
     }
 }
 
@@ -92,7 +97,7 @@ function dotChange(params) {
 function playSlide(params) {
     if(!params.flag) return
     params.flag = false
-    
+
     var picWrapper = $('.marquee-wrapper'),
         dots = $('.marquee-dots a'),
         picWidth = params.width,
@@ -115,4 +120,12 @@ function playSlide(params) {
             picWrapper.css('left', - (size-1) * picWidth+'px')
         }
     })
+}
+
+// 自动播放
+function autoplay(temp) {
+    temp.timer = setInterval(() => {
+        temp.index += 1
+        playSlide(temp)
+    }, 3000)
 }
