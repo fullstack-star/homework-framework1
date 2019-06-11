@@ -1,6 +1,32 @@
-<div id="marquee">
-  <img>
-  <img>
-  <img>
-</div>
-<script src="./libs/jquery.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>幻灯片轮播</title>
+
+  <link rel="stylesheet" href="css/swiper.min.css">
+  <link rel="stylesheet" href="css/fancybox.css">
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide"><a data-fancybox href="./imgs/01.jpg"><img src="./imgs/01.jpg"></a></div>
+      <div class="swiper-slide"><a data-fancybox href="./imgs/02.jpg"><img src="./imgs/02.jpg"></a></div>
+      <div class="swiper-slide"><a data-fancybox href="./imgs/03.jpg"><img src="./imgs/03.jpg"></a></div>
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+  <script src="./libs/jquery.js"></script>
+  <script src="./libs/swiper.min.js"></script>
+  <script src="./libs/jquery.fancybox.min.js"></script>
+  <script src="./libs/marquee.js"></script>
+  <script src="./js/main.js"></script>
+</body>
+
+</html>
