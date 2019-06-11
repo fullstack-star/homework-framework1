@@ -1,6 +1,32 @@
-<div id="marquee">
-  <img>
-  <img>
-  <img>
-</div>
-<script src="./libs/jquery.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>x-carousel</title>
+    <link rel="stylesheet" href="./css/normalize.css" />
+    <style>
+			span {
+				-moz-user-select: none;
+				-webkit-user-select: none;
+				-ms-user-select: none;
+				-khtml-user-select: none;
+				user-select: none;
+			}
+      #marquee {
+        width: 30%;
+        height: 40%;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        border: 1px solid;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="marquee"></div>
+    <script src="./libs/jquery.js"></script>
+    <script src="./libs/marquee.js"></script>
+    <script src="./js/main.js"></script>
+  </body>
+</html>
