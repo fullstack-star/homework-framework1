@@ -1,0 +1,60 @@
+.modal {
+	display: none;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: rgba(0, 0, 0, 0.9);
+	text-align: center;
+	z-index: 10;
+	user-select: none;
+}
+.modal::before {
+	content: "";
+	display: inline-block;
+	width: 0;
+	height: 100%;
+	vertical-align: middle;
+}
+.modal .modal_dialog {
+	overflow: hidden;
+	display: inline-block;
+	position: relative;
+	width: 800px;
+	height: 500px;
+	font-size: 0;
+	background-color: #d2d2d2;
+	border-radius: 5px;
+	text-align: center;
+	vertical-align: middle;
+}
+.modal .modal_dialog::before {
+	content: "";
+	display: inline-block;
+	width: 0;
+	height: 100%;
+	vertical-align: middle;
+}
+.modal .modal_dialog img {
+	display: inline-block;
+	max-width: 100%;
+	max-height: 100%;
+	vertical-align: middle;
+}
+
+.modal .modal_dialog .modal_close {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	width: 30px;
+	height: 30px;
+	background-image: url(/assets/icon_close.svg);
+	background-size: cover;
+	opacity: 0.5;
+	cursor: pointer;
+}
+.modal .modal_dialog .modal_close:hover {
+	opacity: 1;
+	transition: 0.6s;
+}
