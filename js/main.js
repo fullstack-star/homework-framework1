@@ -1,1 +1,2 @@
-$('#marquee').marquee()
+$('#marquee').marquee();
+$("a.fancybox").fancybox();
