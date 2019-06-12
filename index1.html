@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+    <style>
+        /* a img {
+            width: 100px;
+            height: auto;
+        } */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .content {
+            position: relative;
+            width: 100%;
+            padding: 0 60px;
+        }
+
+        .swiper-ct {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            border: 3px solid #000;
+        }
+
+        .prev-btn,
+        .next-btn {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            margin-top: -20px;
+            width: 60px;
+            text-align: center;
+            background: rgb(46, 135, 236);
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .next-btn {
+            left: auto;
+            right: 0;
+        }
+
+        ul {
+            position: absolute;
+            left: 0;
+            top: 0;
+            overflow: hidden;
+            width: 200%;
+        }
+
+        li {
+            float: left;
+            width: 50%;
+        }
+
+        li img {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <div class="prev-btn">上一张</div>
+        <div class="swiper-ct">
+            <ul>
+                <li class="swiper"><img src="./1.jpg" alt=""></li>
+                <li class="swiper"><img src="./2.jpg" alt=""></li>
+            </ul>
+        </div>
+        <div class="next-btn">下一张</div>
+    </div>
+    <!-- <a rel="group" href="1.jpg" title="图片标题"><img alt="" src="1.jpg" /></a>
+    <a rel="group" href="2.jpg" title="图片标题"><img alt="" src="2.jpg" /></a>
+    <a rel="group" href="3.jpg" title="蓝天白云绿草"><img alt="" src="3.jpg" /></a> -->
+</body>
+
+</html>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+    (function () {
+        let swiperL = 0;
+        let activeIndex = 0;
+        let imgLen = $("ul li").length;
+        let autoAction;
+
+        function prevAction() {
+            if (activeIndex >= imgLen - 1) {
+                activeIndex = -1;
+            }
+            $(".swiper-ct ul").animate({
+                left: 100 * activeIndex + '%'
+            })
+        }
+
+        function nextAction() {
+            if (activeIndex < -1) {
+                activeIndex = 0;
+            }
+            $(".swiper-ct ul").animate({
+                left: 100 * activeIndex + '%'
+            })
+        }
+        $(".prev-btn").click(function () {
+            activeIndex++;
+            prevAction();
+        })
+        $(".next-btn").click(function () {
+            activeIndex--;
+            nextAction();
+        })
+
+        $(".swiper-c").hover(function () {
+            clearTimeout(autoAction)
+        }, function () {
+            autoAction = setTimeout(() => {
+                activeIndex++;
+                prevAction();
+            }, 3000)
+        })
+
+        $(window).load(function () {
+            autoAction = setTimeout(() => {
+                activeIndex++;
+                prevAction();
+            }, 3000)
+        })
+
+
+
+
+
+
+
+
+
+        // $("a[rel=group]").fancybox({
+        //     'titlePosition': 'over',
+        //     'cyclic': true,
+        //     'titleFormat': function (title, currentArray, currentIndex, currentOpts) {
+        //         return '<span id="fancybox-title-over">' + (currentIndex + 1) +
+        //             ' / ' + currentArray.length + (title.length ? '   ' + title : '') +
+        //             '</span>';
+        //     }
+        // });
+    })()
+</script>

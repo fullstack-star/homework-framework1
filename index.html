@@ -1,6 +1,115 @@
-<div id="marquee">
-  <img>
-  <img>
-  <img>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/index.css">
+  <style>
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+    }
+
+    .section {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="section">
+    <div id="marquee">
+      <div id="prev-btn"> 上一张 </div>
+      <div id="next-btn"> 下一张 </div>
+      <ul>
+        <!-- <li><a href=""><img src="./img/1.jpg" alt=""></a></li>
+        <li><a href=""><img src="./img/2.jpg" alt=""></a></li>
+        <li><a href=""><img src="./img/3.jpg" alt=""></a></li> -->
+      </ul>
+    </div>
+  </div>
+</body>
+
+</html>
 <script src="./libs/jquery.js"></script>
+<script>
+  (function () {
+    let imgList = ['./img/1.jpg', './img/2.jpg', './img/3.jpg'];
+    let imgLen = imgList.length;
+    let timer = null;
+    let curIndex = 0;
+    let html = "";
+    for (let img of imgList) {
+      html += `
+      <li><a href="javascipt:;"><img src="${img}" alt=""></a></li>
+    `
+    }
+    $('#marquee ul').html(html).width(imgLen * 100 + '%');
+    $('#marquee li').width(100 / imgLen + '%')
+    // 固定按钮位置
+    setTimeout(() => {
+      resizeWindow();
+    }, 100)
+
+    $("#marquee").hover(function () {
+      console.log('hover');
+    }, function () {
+      console.log('nohover');
+    })
+
+    $("#prev-btn").click(function () {
+      curIndex--;
+      prevAction()
+    })
+
+    $("#next-btn").click(function () {
+      curIndex++;
+      nextAction();
+    })
+
+    function prevAction() {
+      if (curIndex < 0) {
+        curIndex = imgLen - 1;
+      }
+      $("#marquee ul").animate({
+        left: -100 * curIndex + '%'
+      })
+    }
+
+    function nextAction() {
+      if (curIndex > imgLen - 1) {
+        curIndex = 0;
+      }
+      $("#marquee ul").animate({
+        left: -100 * curIndex + '%'
+      })
+    }
+
+    function timerAction() {
+      timer = setInterval(() => {
+        curIndex++;
+        nextAction();
+      }, 2000)
+    }
+
+    $(window).load(function () {
+      timerAction();
+    })
+
+
+
+
+    function resizeWindow() {
+      $("#marquee").height($("#marquee ul").height())
+    }
+
+    $(window).resize(function () {
+      resizeWindow()
+    })
+  })($)
+</script>

@@ -1,0 +1,53 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#marquee {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+#marquee #prev-btn,
+#marquee #next-btn {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: -30px;
+    width: 60px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    background: #eee;
+    z-index: 1;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#marquee #next-btn {
+    left: auto;
+    right: 0;
+}
+
+#marquee ul {
+    position: absolute;
+    left: 0;
+    top: 0;
+    list-style: none;
+}
+
+#marquee ul li {
+    float: left;
+    list-style: none;
+}
+
+#marquee ul li a {
+    width: 100%;
+    display: block;
+}
+
+#marquee ul li img {
+    width: 100%;
+}
