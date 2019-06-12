@@ -1,0 +1,53 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  position: relative;
+  width: 640px;
+  height: 360px;
+  margin: 20% auto 0 auto;
+  overflow: hidden;
+}
+
+.container .imgs {
+  position: absolute;
+  width: 3200px;
+  height: 360px;
+  z-index: 1;
+}
+
+.container .imgs a {
+    float: left;
+    width: 640px;
+    height: 360px;
+}
+
+.container .arrow {
+  position: absolute;
+  top: 35%;
+  color: red;
+  padding: 0px 20px;
+  border-radius: 50%;
+  font-size: 50px;
+  z-index: 2;
+  display: none;
+}
+.container .arrow_left {
+  left: 10px;
+}
+.container .arrow_right {
+  right: 10px;
+}
+.container:hover .arrow {
+  display: block;
+}
+.container .arrow:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
