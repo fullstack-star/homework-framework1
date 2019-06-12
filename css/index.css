@@ -1,0 +1,8 @@
+.marquee{
+	position: relative;
+	width: 60vw;
+	height: 50vh;
+	left: 20vw;
+	top: 20vh;
+	background: black;
+}
