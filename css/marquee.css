@@ -1,0 +1,78 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+#marquee {
+  overflow: hidden;
+  position: relative;
+}
+.buttons>div {
+  width: 36px;
+  height: 36px;
+  color: #fff;
+  text-align: center;
+  line-height: 36px;
+  border-radius: 50%;
+  background: rgba(31,45,61,.3);
+  position: absolute;
+  top: calc(50% - 18px);
+  z-index: 100;
+}
+.buttons>div:first-child {
+  left: 16px;
+}
+.buttons>div:last-child {
+  right: 16px;
+}
+.list {
+  transform: translateX(0);
+  transition: transform 300ms;
+}
+.list>div {
+  float: left;
+}
+.list>div>img {
+  width: 100%;
+}
+.dots {
+  width: 100%;
+  height: 20px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+.dots>li {
+  width: 16px;
+  height: 3px;
+  background: #8391a5;
+  margin-right: 3px;
+  transition: width 300ms;
+}
+.dots>li:list-child {
+  margin: 0;
+}
+.popup {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+}
+.mask {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, .4);
+}
+.popup>img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
