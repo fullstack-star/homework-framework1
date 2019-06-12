@@ -1,0 +1,36 @@
+#marquee {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+
+.marquee-container {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  font-size: 0;
+}
+
+.marquee-container img {
+  display: inline-block;
+}
+
+.nav>.next-nav, .nav>.prev-nav {
+  position: absolute;
+  width: 24px;
+  height: 36px;
+  color: #ccc;
+  font-size: 36px;
+  transform: translateY(-18px);
+}
+
+.nav>.prev-nav {
+  left: 12px;
+  top: 50%;
+}
+
+.nav>.next-nav {
+  right: 12px;
+  top: 50%;
+}
+
