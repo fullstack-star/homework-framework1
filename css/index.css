@@ -9,12 +9,18 @@ a{
 	padding: 20px;
 	text-align: center;
 }
-#marquee{
+.mrquee-wrapper{
 	width:250px;
 	height: 250px;
 	overflow: hidden;
 	display: inline-block;
 	vertical-align: middle;
+}
+#marquee{
+	overflow:hidden;
+}
+#marquee a{
+	float: left;
 }
 #marquee img{
 	width:250px;
