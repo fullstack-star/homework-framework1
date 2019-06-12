@@ -1,0 +1,45 @@
+#marquee {
+    position: relative;
+    margin: 100px auto 0;
+	width: 1000px;
+}
+
+#marquee img {
+	width: 100%;
+}
+
+#marquee-wrapper {
+    display: flex;
+    overflow: hidden;
+}
+
+#marquee-wrapper img {
+    display: none;
+    width: 1000px;
+}
+
+#marquee-wrapper img.active{
+    display: block;
+    transition: all .1s;
+}
+
+.slide-arrow {
+    user-select: none;
+    cursor: pointer;
+    position: absolute;
+    display: block;
+    font-size: 30px;
+    height: 30px;
+    line-height: 30px;
+    color: #ddd;
+    top: 50%;
+    margin-top: -15px;
+}
+
+.slide-right {
+    right: 10px;
+}
+.slide-left {
+    left: 10px;
+}
+
