@@ -1,6 +1,31 @@
-<div id="marquee">
-  <img>
-  <img>
-  <img>
-</div>
-<script src="./libs/jquery.js"></script>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="./css/index.css" />
+		<link rel="stylesheet" type="text/css" href="./libs/fancybox/jquery.fancybox.css" />
+		<title></title>
+	</head>
+
+	<body>
+		<div class="container">
+			<a class="arrow previous" href="javascript:void(0)">&lt;</a>
+			<div id="marquee">
+				<a class="fancybox" href="./images/1_b.jpg" data-fancybox-group="gallery" title="Lorem ipsum dolor sit amet"><img src="./images/1_s.jpg" alt="" /></a>
+				<a class="fancybox" href="./images/2_b.jpg" data-fancybox-group="gallery" title="Etiam quis mi eu elit temp"><img src="./images/2_s.jpg" alt="" /></a>
+				<a class="fancybox" href="./images/3_b.jpg" data-fancybox-group="gallery" title="Cras neque mi, semper leon"><img src="./images/3_s.jpg" alt="" /></a>
+			</div>
+			<a class="arrow next" href="javascript:void(0)">&gt;</a>
+		</div>
+
+		<script src="./libs/jquery.js"></script>
+		<script src="./libs/marquee.js"></script>
+		<script src="./libs/fancybox/jquery.fancybox.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$('.fancybox').fancybox();
+			})
+		</script>
+	</body>
+
+</html>
