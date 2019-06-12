@@ -1,0 +1,92 @@
+.marquee-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+}
+
+.marquee-container .marquee-bg {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .6);
+}
+
+.marquee-container .marquee-operate {
+    z-index: 10;
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    background-color: #000;
+    overflow: hidden;
+}
+
+.marquee-container .marquee-operate .marquee-operate-item {
+    float: left;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.marquee-container .marquee-icon {
+    display: inline-block;
+}
+
+.marquee-container .marquee-icon.marquee-icon-play {
+    border: 10px solid transparent;
+    border-left-color: #fff;
+}
+.marquee-container .marquee-operate-item.active .marquee-icon {
+    border-left-color: rgb(165, 30, 7);
+}
+
+.marquee-container .marquee-icon.marquee-icon-close:before {
+    content: "X";
+    font-size: 20px;
+    color: #fff;
+}
+
+.marquee-container .marquee-arrow-item {
+    z-index: 10;
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    padding: 5px 10px;
+    color: #fff;
+    transform: translateY(-50%);
+    background-color: #000;
+    cursor: pointer;
+}
+
+.marquee-container .marquee-arrow-item.marquee-arrow-right {
+    left: auto;
+    right: 10px;
+}
+
+.marquee-container .marquee-body {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 44px;
+}
+
+.marquee-container .marquee-slide {
+    height: 100%;
+    text-align: center;
+}
+
+.marquee-container .marquee-slide-item {
+    display: none;
+}
+
+.marquee-container .marquee-slide img {
+    display: inline-block;
+    height: 100%;
+}
+
+body.marquee-fixed-body {
+    overflow: hidden;
+}
