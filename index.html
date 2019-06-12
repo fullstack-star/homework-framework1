@@ -1,6 +1,49 @@
-<div id="marquee">
-  <img>
-  <img>
-  <img>
+<link
+  href="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"
+  rel="stylesheet"
+/>
+<link
+  href="https://cdn.bootcss.com/Swiper/4.5.0/css/swiper.min.css"
+  rel="stylesheet"
+/>
+<div id="marque">
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <a
+          href="https://source.unsplash.com/juHayWuaaoQ/1500x1000"
+          data-fancybox="images"
+        >
+          <img src="https://source.unsplash.com/juHayWuaaoQ/240x160" />
+        </a>
+      </div>
+      <div class="swiper-slide">
+        <a
+          href="https://source.unsplash.com/juHayWuaaoQ/1500x1000"
+          data-fancybox="images"
+        >
+          <img src="https://source.unsplash.com/juHayWuaaoQ/240x160" />
+        </a>
+      </div>
+      <div class="swiper-slide">
+        <a
+          href="https://source.unsplash.com/juHayWuaaoQ/1500x1000"
+          data-fancybox="images"
+        >
+          <img src="https://source.unsplash.com/juHayWuaaoQ/240x160" />
+        </a>
+      </div>
+    </div>
+  </div>
 </div>
 <script src="./libs/jquery.js"></script>
+<script src="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+<script src="https://cdn.bootcss.com/Swiper/4.5.0/js/swiper.min.js"></script>
+<script src="./libs/marquee.js"></script>
+<script>
+  $("#marque").marquee("init", {
+    eleName: ".swiper-container",
+    autoplay: true, //等同于以下设置
+    width: 400
+  });
+</script>
