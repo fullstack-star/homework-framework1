@@ -1,0 +1,32 @@
+#marquee {
+  width: 100%;
+  text-align: center;
+}
+#img-show {
+  max-width: 600px;
+}
+.arrow-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 900px;
+  height: auto;
+  margin: 60px auto 0;
+  font-size: 0;
+}
+.prev {
+  width: 0;
+  height: 0;
+  border-width: 30px 30px 30px 0;
+  border-style: solid;
+  border-color: transparent #333 transparent transparent;
+  cursor: pointer;
+}
+.next {
+  width: 0;
+  height: 0;
+  border-width: 30px 0 30px 30px;
+  border-style: solid;
+  border-color: transparent transparent transparent #333;
+  cursor: pointer;
+}
