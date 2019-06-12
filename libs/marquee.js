@@ -1,9 +1,3 @@
-/**
- * 1. popup when click: 点击图片弹出播放器，弹出后要禁止后面的页面滚动
- * 2. 可翻页: 可左右切换图片，点击第几张则定位到第几张
- * 3. 可点击播放按钮实现自动播放，可以传自动播放的速度参数
- * 4. 抛出钩子函数，beforeShow/shown/beforeChange/changed/beforePlay/afterPlay/beforeHide/hiden
- */
 const Marquee = function (element, options) {
 	this.$element = $(element);
 	this.$imgs = this.$element.find('img');
@@ -22,6 +16,7 @@ const Marquee = function (element, options) {
 Marquee.DEFAULTS = {
 	interval: 5000,
 	showArrow: true,
+	loop: false,
     operateList: ['play', 'close'],
 }
 
@@ -161,10 +156,8 @@ Marquee.prototype.initPlayEvent = function() {
 	this.$play.click(function() {
 		if (self.timer) {
 			self.stopPlay();
-			$(self.$play).removeClass('active');
 		} else {
 			self.play();
-			$(self.$play).addClass('active');
 		}
 	});
 }
@@ -178,7 +171,7 @@ Marquee.prototype.initPrevEvent = function() {
 	this.$prev.click(function() {
 		self.stopPlay(self.timer);
 		self.currentIndex = self.currentIndex <= 0 ? 0 : self.currentIndex - 1;
-		self.changeImg('prev');
+		self.changeImg('prev', this.loop);
 	});
 }
 
@@ -190,7 +183,7 @@ Marquee.prototype.initNextEvent = function() {
 	if (!this.$next) return;
 	this.$next.click(function() {
 		self.stopPlay(this.timer);
-		self.changeImg('next');
+		self.changeImg('next', this.loop);
 	});
 }
 
@@ -272,6 +265,7 @@ Marquee.prototype.changeImg = function(type = 'next', loop = false) {
 Marquee.prototype.play = function() {
 	const { interval } = this.options;
 	const self = this;
+	$(self.$play).addClass('active');
 	this.timer = setInterval(function() {
 		self.changeImg('next', true);
 	}, interval);
@@ -284,6 +278,7 @@ Marquee.prototype.stopPlay = function() {
 	if (!this.timer) return;
 	clearInterval(this.timer);
 	this.timer = null;
+	$(self.$play).removeClass('active');
 }
 
 $.fn.marquee = function (option) {
