@@ -1,6 +1,32 @@
+<link rel="stylesheet" href="./css/marquee.css">
+
 <div id="marquee">
-  <img>
-  <img>
-  <img>
+  <div class="picture"><img src="./imgs/DSCF2437.JPG" alt="" class="img"></div>
+  <div class="picture"><img src="./imgs/DSCF2479.JPG" alt="" class="img"></div>
+  <div class="picture"><img src="./imgs/DSCF2484.JPG" alt="" class="img"></div>
 </div>
+
+<div class="modal" id="modal">
+  <div class="content">
+    <img src="" alt="" id="display-img">
+    <span class="prev" id="prev">&lt;</span>
+    <span class="next" id="next">&gt;</span>
+  </div>
+  <span class="close" id="close">close</span>
+</div>
+
 <script src="./libs/jquery.js"></script>
+<script src="./libs/marquee.js"></script>
+<script>
+  $("#marquee").marquee({
+    pageChange: function(index, src) {
+      console.log(index, src);
+    },
+    onOpen: function() {
+      console.info("打开")
+    },
+    onClose: function() {
+      console.info("关闭")
+    }
+  })
+</script>
