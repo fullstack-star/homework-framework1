@@ -1,1 +1,1 @@
-$('#marquee').marquee()
+$('#marquee').marquee();
