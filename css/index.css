@@ -1,0 +1,26 @@
+.outer-wrapper {
+    width: 200px; 
+    overflow: hidden;
+    position: relative;
+    display: flex;
+}
+.img-wrapper {
+    display: flex;
+    position: relative;
+}
+.left-btn {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    z-index: 1;
+    transform: translateY(-50%);
+    display: none;
+}
+.rgt-btn {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    z-index: 1;
+    transform: translateY(-50%);
+    display: none;
+}
