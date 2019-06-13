@@ -21,17 +21,21 @@
 			autoplay: 0, // 自动播放时间（秒）
 			pointer: true // 指示器
 		};
-		// 配置信息
+		// 实例的配置信息
 		this.option = $.extend(true, {}, _option, option);
-		// 数据信息
+		// 实例的数据信息
 		this.data = {
 			list: [], // 图片路径列表
 			index: 0 // 指示器序号
 		};
+		// 实例的订阅列表
+		this.subscriber = {};
+		// 实例的dom节点
+		this.node = null;
 	};
 	Marquee.prototype = {
 		constructor: Marquee,
-		/* 获取DOM中的原始数据 */
+		/* 获取DOM模板中的原始数据 */
 		getTplData: function(context) {
 			var list = $(context).find("img"),
 				that = this;
@@ -72,7 +76,9 @@
 					];
 					return that.data.list
 						.map(function(path, index) {
-							return index === 0 ? htmlstr_point_lis[0] : htmlstr_point_lis[1];
+							return index === 0
+								? '<li data-value=0 class="pointer_li z-active"></li>'
+								: "<li data-value=" + index + ' class="pointer_li"></li>';
 						})
 						.join("");
 				})());
@@ -106,50 +112,84 @@
 			// 渲染节点
 			this.render(node_slide, context);
 		},
-
 		/* 渲染 */
 		render: function(htmlNode, context) {
 			var ctx = context || document.body;
 			$(ctx)
 				.empty()
 				.append(htmlNode);
+			this.node = htmlNode;
 		},
 		/* 图片翻页 */
-		setPage: function(command) {
-			var commands = ["next", "prev"],
-				data = this.data;
+		setPage: function(offset) {
+			var data = this.data;
+			if (typeof offset !== "number") return;
 
-			if (commands.indexOf(command) === -1) return;
 			// 修改数据
-			switch (command) {
-				case "next":
-					data.index = data.index === data.list.length - 1 ? 0 : ++data.index;
-					break;
-				case "prev":
-					data.index = data.index === 0 ? data.list.length - 1 : --data.index;
-					break;
+			if (data.index + offset < 0) {
+				data.index = data.list.length - 1;
+			} else if (data.index + offset > data.list.length - 1) {
+				data.index = 0;
+			} else {
+				data.index = data.index + offset;
 			}
 			// 更新dom-幻灯片槽移动
-			$(".j-sliders").css({
+			$(this.node).find(".j-sliders").css({
 				transform:
 					"translateX(-" + (1 / data.list.length) * data.index * 100 + "%)"
 			});
 			// 更新dom-指示器变焦
-			$(".j-pointer .pointer_li")
+			$(this.node).find(".j-pointer .pointer_li")
 				.removeClass("z-active")
 				.eq(data.index)
 				.addClass("z-active");
 		},
 		/* 各种钩子 */
-		componentDidMount: function() {
+		componentDidMount: function(context) {
 			var that = this;
-			$(".j-arrow").click(function(e) {
-				if (e.target.className === "arrow_left") that.setPage("prev");
-				if (e.target.className === "arrow_right") that.setPage("next");
+			data = that.data;
+
+			$(this.node).find(".j-arrow").click(function(e) {
+				if (e.target.className === "arrow_left") that.setPage(-1);
+				if (e.target.className === "arrow_right") that.setPage(1);
 			});
+			that.option.pointer &&
+				$(this.node).find(".j-pointer").click(function(e) {
+					if (!$(e.target).hasClass("pointer_li")) return;
+					var value = $(e.target).attr("data-value");
+					that.setPage(value - data.index);
+				});
+			data.list.length > 0 &&
+				$(this.node).find(".j-sliders").click(function(e) {
+					if (e.target.tagName !== "IMG") return;
+					var value = $(e.target).attr("src");
+					marquee.$emit("slideClick", { path: value });
+				});
 		},
-		onsliderClick: function(callback) {
-			callback();
+		$on: function(name, fn) {
+			// 去重
+			function unique(arr) {
+				if (!Array.isArray(arr)) return;
+				const finalArr = Array.prototype.filter.call(arr, function(
+					item,
+					index
+				) {
+					return arr.indexOf(item) === index;
+				});
+				return finalArr;
+			}
+
+			if (!(this.subscriber[name] instanceof Array)) this.subscriber[name] = [];
+			if (typeof fn !== "function") return;
+			this.subscriber[name].push(fn);
+			this.subscriber[name] = unique(this.subscriber[name]);
+		},
+		$emit: function(name, args) {
+			if (!(this.subscriber[name] instanceof Array)) return;
+			var args = args || {};
+			this.subscriber[name].forEach(function(item) {
+				item.call(this, args);
+			});
 		}
 	};
 
@@ -164,7 +204,7 @@
 
 			instance.getTplData(this);
 			instance.buildUI(this);
-			instance.componentDidMount();
+			instance.componentDidMount(this);
 
 			return instance;
 		}

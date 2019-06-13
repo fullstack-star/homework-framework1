@@ -15,11 +15,15 @@
 	 * 类
 	 * =============================
 	 */
-	var Modal = function() {
-		// 数据信息
+	var Modal = function(option) {
+		if (typeof option !== "object") option = {};
+		var _option = {};
+		this.option = $.extend(true, {}, _option, option);
 		this.data = {
 			status: 0 // 0关/1开
 		};
+		this.subscriber = {};
+		this.node = null;
 	};
 	Modal.prototype = {
 		constructor: Modal,
@@ -29,16 +33,12 @@
 			var htmlstr_outline = [
 				'<div class="modal_dialog">',
 				'<i class="modal_close"></i>',
+				"<img />",
 				"</div>"
 			];
 			var node_modal = document.createElement("div");
 			node_modal.className = "modal j-modal";
 			node_modal.innerHTML = htmlstr_outline.join("");
-			node_modal.getElementsByClassName(
-				"modal_dialog"
-			)[0].appendChild = (function() {
-				return "<p>hahahhahahahahahah!</p>";
-			})();
 
 			// 渲染节点
 			this.render(node_modal, context);
@@ -47,25 +47,29 @@
 		render: function(htmlNode, context) {
 			var ctx = context || document.body;
 			$(ctx).append(htmlNode);
+			this.node = htmlNode;
 		},
 		/* 各种钩子 */
-		componentDidMount: function() {
+		componentDidMount: function(context) {
 			var that = this;
 
-			$(".j-sliders").click(function(e) {
-				that.open();
-			});
-			$(".j-modal .modal_close").click(function(e) {
-				that.close();
-			});
+			$(this.node)
+				.find(".modal_close")
+				.click(function(e) {
+					that.close();
+				});
 		},
-		open: function() {
-			$(".j-modal").css({
-				display: "block"
-			});
+		open: function(file) {
+			$(this.node)
+				.css({
+					display: "block"
+				})
+				.find("img")
+				.eq(0)
+				.attr("src", file.path);
 		},
 		close: function() {
-			$(".j-modal").css({
+			$(this.node).css({
 				display: "none"
 			});
 		}

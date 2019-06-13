@@ -1,13 +1,26 @@
-/* 实例化轮播组件 */
+/*
+ * ModuleName: 业务代码
+ * Author: qyingkou@163.com
+ * Date: 20190613
+ */
+
+/* 实例化轮播组件1 */
 var marquee = $("#marquee").marquee({
 	pointer: true // 显示指示器
+});
+/* 实例化轮播组件2 */
+var marquee2 = $("#marquee2").marquee({
+	pointer: false // 显示指示器
 });
 /* 实例化modal组件 */
 var modal = $("body").modal();
 
-// 点击回调
-marquee.onsliderClick(function(n) {
-	modal.open;
+// 轮播实例绑定事件
+marquee.$on("slideClick", function(file) {
+	modal.open(file);
+});
+marquee2.$on("slideClick", function(file) {
+	modal.open(file);
 });
 
 /*
@@ -38,16 +51,15 @@ $(".j-control-operate").on("click", function(e) {
 
 	switch (value) {
 		case "next":
-			marquee.setPage("next");
+			marquee.setPage(1);
 			break;
 		case "prev":
-			marquee.setPage("prev");
+			marquee.setPage(-1);
 			break;
 		case "click":
-			marquee.onsliderClick(function() {
-				modal.open();
+			marquee.$emit("slideClick", {
+				path: marquee.data.list[marquee.data.index]
 			});
 			break;
 	}
-	console.log("执行了", value, "操作");
 });

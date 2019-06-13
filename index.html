@@ -18,10 +18,10 @@
 <body>
 	<h2 class="title">轮播组件练习 - 编写jQuery插件</h2>
 
-	<!-- 控制面板 -->
+	<!-- 控制面板-测试用途 -->
 	<div class="control j-control">
 		<dl class="j-control-width">
-			<dt>组件宽度：</dt>
+			<dt>布局宽度：</dt>
 			<dd data-value=300>
 				<button class="btn">300px</button>
 			</dd>
@@ -33,7 +33,7 @@
 			</dd>
 		</dl>
 		<dl class="j-control-height">
-			<dt>组件高度：</dt>
+			<dt>布局高度：</dt>
 			<dd data-value=100>
 				<button class="btn">100px</button>
 			</dd>
@@ -59,17 +59,23 @@
 		</dl>
 	</div>
 
-
-	<!-- 原始结构 -->
 	<div class="container">
 		<div class="container_slide" id="marquee">
+			<!-- 模板结构 -->
 			<img data-src="./assets/horizontal.jpg">
 			<img data-src="./assets/vertical.jpg">
 			<img data-src="./assets/square.jpg">
 			<img data-src="./assets/transparent.png">
 		</div>
+		<br>
+		<div class="container_slide" id="marquee2">
+				<!-- 模板结构 -->
+				<img data-src="./assets/vertical.jpg">
+				<img data-src="./assets/horizontal.jpg">
+				<img data-src="./assets/transparent.png">
+				<img data-src="./assets/square.jpg">
+			</div>
 	</div>
-
 	<!-- 脚本 -->
 	<script src="./libs/jquery.js"></script>
 	<script src="./libs/marquee.js"></script>
