@@ -32,6 +32,8 @@
 		this.subscriber = {};
 		// 实例的dom节点
 		this.node = null;
+		// 实例的计数器
+		this.timer = {};
 	};
 	Marquee.prototype = {
 		constructor: Marquee,
@@ -134,37 +136,50 @@
 				data.index = data.index + offset;
 			}
 			// 更新dom-幻灯片槽移动
-			$(this.node).find(".j-sliders").css({
-				transform:
-					"translateX(-" + (1 / data.list.length) * data.index * 100 + "%)"
-			});
+			$(this.node)
+				.find(".j-sliders")
+				.css({
+					transform:
+						"translateX(-" + (1 / data.list.length) * data.index * 100 + "%)"
+				});
 			// 更新dom-指示器变焦
-			$(this.node).find(".j-pointer .pointer_li")
+			$(this.node)
+				.find(".j-pointer .pointer_li")
 				.removeClass("z-active")
 				.eq(data.index)
 				.addClass("z-active");
 		},
 		/* 各种钩子 */
 		componentDidMount: function(context) {
-			var that = this;
+			var that = this,
 			data = that.data;
 
-			$(this.node).find(".j-arrow").click(function(e) {
-				if (e.target.className === "arrow_left") that.setPage(-1);
-				if (e.target.className === "arrow_right") that.setPage(1);
-			});
+			$(this.node)
+				.find(".j-arrow")
+				.click(function(e) {
+					if (e.target.className === "arrow_left") that.setPage(-1);
+					if (e.target.className === "arrow_right") that.setPage(1);
+				});
 			that.option.pointer &&
-				$(this.node).find(".j-pointer").click(function(e) {
-					if (!$(e.target).hasClass("pointer_li")) return;
-					var value = $(e.target).attr("data-value");
-					that.setPage(value - data.index);
-				});
+				$(this.node)
+					.find(".j-pointer")
+					.click(function(e) {
+						if (!$(e.target).hasClass("pointer_li")) return;
+						var value = $(e.target).attr("data-value");
+						that.setPage(value - data.index);
+					});
 			data.list.length > 0 &&
-				$(this.node).find(".j-sliders").click(function(e) {
-					if (e.target.tagName !== "IMG") return;
-					var value = $(e.target).attr("src");
-					marquee.$emit("slideClick", { path: value });
-				});
+				$(this.node)
+					.find(".j-sliders")
+					.click(function(e) {
+						if (e.target.tagName !== "IMG") return;
+						var value = $(e.target).attr("src");
+						marquee.$emit("slideClick", { path: value });
+					});
+			this.option.autoplay > 0 &&
+				(that.timer.autoplay = window.setInterval(function() {
+					that.setPage(1);
+				}, that.option.autoplay * 1000));
 		},
 		$on: function(name, fn) {
 			// 去重

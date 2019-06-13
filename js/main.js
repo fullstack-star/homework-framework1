@@ -5,12 +5,11 @@
  */
 
 /* 实例化轮播组件1 */
-var marquee = $("#marquee").marquee({
-	pointer: true // 显示指示器
-});
+var marquee = $("#marquee").marquee();
 /* 实例化轮播组件2 */
 var marquee2 = $("#marquee2").marquee({
-	pointer: false // 显示指示器
+	pointer: false, // 显示指示器
+	autoplay: 3	// 自动播放，秒
 });
 /* 实例化modal组件 */
 var modal = $("body").modal();
