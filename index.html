@@ -1,6 +1,29 @@
-<div id="marquee">
-  <img>
-  <img>
-  <img>
-</div>
-<script src="./libs/jquery.js"></script>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>轮播图修改</title>
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./libs/fancybox/jquery.fancybox.min.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+    <div id="marquee" class="marquee">
+        <div class="groupeds-wrap">
+            <a class="grouped_elements" rel="group1" href="./imgs/disposition_1.jpg"><img src="./imgs/disposition_1.jpg" alt=""/></a>
+            <a class="grouped_elements" rel="group1" href="./imgs/disposition_2.jpg"><img src="./imgs/disposition_2.jpg" alt=""/></a>   
+            <a class="grouped_elements" rel="group2" href="./imgs/disposition_3.jpg"><img src="./imgs/disposition_3.jpg" alt=""/></a> 
+            <a class="grouped_elements" rel="group2" href="./imgs/disposition_4.jpg"><img src="./imgs/disposition_4.jpg" alt=""/></a> 
+        </div>
+
+        <button class="btn prev-btn" type="button"> < </button>
+        <button class="btn next-btn" type="button"> > </button>
+    </div>
+
+    <script type="text/javascript" src="./libs/jquery.js"></script>
+    <script type="text/javascript" src="./libs/fancybox/jquery.fancybox.min.js"></script>
+    <script type="text/javascript" src="./libs/marquee.js"></script>
+    <script type="text/javascript" src="./js/main.js"></script>
+</body>
+</html>
