@@ -19,7 +19,7 @@ $.fn.marquee = function(config) {
   $prevBtn.on('click', function(e) {
     prevPlay();
   });
-  
+
   var nextPlay = function() {
     imgIndex++
     if(imgIndex > imgsLength - 1) {
@@ -36,7 +36,7 @@ $.fn.marquee = function(config) {
   }
 
   var play = function(index) {
-    $imgsWrap.animate({
+    $imgsWrap.stop().animate({
       marginLeft: -imgWidth * index + 'px',
     });
   }
