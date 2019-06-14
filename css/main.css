@@ -1,0 +1,132 @@
+@charset "UTF-8";
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    background-color: #fff;
+    font: 12px/1.5 Microsoft YaHei, tahoma, arial, Hiragino Sans GB, \\5b8b\4f53, sans-serif;
+    color: #666;
+}
+
+/************* slide ***************/
+
+
+.focus_main {
+    height: 450px;
+    /*width: 590px;*/
+}
+
+.focus_main.mod_lazyload {
+    z-index: -1;
+}
+
+.focus_item {
+    width: 590px;
+    height: 450px;
+    background-color: #fff;
+}
+
+.focus_item_img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    -webkit-transition: opacity 0.2s;
+    -o-transition: opacity 0.2s;
+    -moz-transition: opacity 0.2s;
+    transition: opacity 0.2s;
+}
+
+.focus_item_img[data-src] {
+    opacity: 0;
+    background: #eee;
+}
+
+.focus_list,
+.focus_item_lk {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+.w-slider {
+    position: relative;
+    float: left;
+    width: 590px;
+    height: 450px;
+    margin-top: 10px;
+    overflow: hidden;
+    transition-duration: 0.3s;
+    /*transform: translate3d(-2080px, 0px, 0px);*/
+    backface-visibility: hidden;
+    left: 0px;
+    opacity: 1;
+}
+.w-slider {
+    /*border: 1px solid red;*/
+}
+
+.w-slider .m-slider {
+    overflow: hidden;
+    height: 450px;
+    width: 100%;
+}
+
+.slider_list {
+    width: 100%;
+    height: 100%;
+}
+
+.slider_wrapper {
+    height: 100%;
+    position: absolute;
+}
+
+.slider_wrapper li {
+    display: block;
+    visibility: visible;
+    float: left;
+    overflow: hidden
+}
+
+/* 翻页按钮 */
+.w-slider .slider_control {
+    *cursor: pointer;
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    margin-top: -20px;
+    width: 24px;
+    height: 40px;
+    background-color: #aeb5ad;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #fff;
+    color: rgba(255, 255, 255, 0.4);
+    line-height: 40px;
+    text-align: center;
+    /*border: 1px solid red;*/
+}
+
+.w-slider .slider_control:hover {
+    color: #fff;
+    background-color: #000;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.w-slider .slider_control_prev {
+    left: 0;
+}
+
+.w-slider .slider_control_next {
+    right: 0;
+}
+
+.w-slider .slider_control img {
+    display: inline-block;
+    border: 0 none;
+    height: 100%;
+    width: 100%;
+}
+
+/*.slider_control*/

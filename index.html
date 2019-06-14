@@ -1,6 +1,56 @@
-<div id="marquee">
-  <img>
-  <img>
-  <img>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--[if lt IE 9]>
+    <script src="./libs/jquery-1.9.1.min.js"></script>
+    <![endif]-->
+    <!--[if gte IE 9]><!-->
+    <script src="./libs/jquery-2.0.0.min.js"></script>
+    <!--<![endif]-->
+</head>
+<link  href="./libs/jquery.fancybox.min.css" rel="stylesheet">
+<link  href="./css/main.css" rel="stylesheet">
+<style type="text/css">
+
+</style>
+<body>
+<div  class="box">
+    <div class="w-slider" id="marquee">
+        <div class="m-slider">
+            <button class="slider_control slider_control_prev">
+                <img src="./static/arrowLeft.svg"></img>
+            </button>
+            <div class="slider_list">
+                <ul class="slider_wrapper">
+                    <li class="slider_item focus_item">
+                        <a href="" class="focus_item_lk">
+                            <img src="" alt="" class="focus_item_img">
+                        </a>
+                    </li>
+                    <li class="slider_item focus_item">
+                        <a href="" class="focus_item_lk">
+                            <img src="" alt="" class="focus_item_img">
+                        </a>
+                    </li>
+                    <li class="slider_item focus_item">
+                        <a href="" class="focus_item_lk">
+                            <img src="" alt="" class="focus_item_img">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <button class="slider_control slider_control_next">
+                <img src="./static/arrowRight.svg"></img>
+            </button>
+        </div>
+    </div>
 </div>
-<script src="./libs/jquery.js"></script>
+<script src="./js/main.js"></script>
+<script src="./libs/jquery.fancybox.min.js"></script>
+<script src="./libs/marquee.js"></script>
+</body>
+</html>
+
+
