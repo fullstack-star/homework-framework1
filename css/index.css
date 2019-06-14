@@ -13,7 +13,6 @@ div{
 #marquee .wrap{
   position: relative;
   display: flex;
-  left: -600px;
   height: 100%;
 }
 #marquee .wrap > a,#marquee .wrap img{
@@ -38,4 +37,22 @@ div{
 #marquee>span:last-child{
   left: auto;
   right: 10px;
+}
+#marquee .dots {
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+#marquee .dots > span {
+  background: black;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  margin-left: 10px;
+  cursor: pointer;
+}
+#marquee .dots > span.active {
+  background: red;
 }
