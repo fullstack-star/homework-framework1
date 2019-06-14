@@ -55,8 +55,8 @@
 			// 主结构
 			var htmlstr_outline = [
 				'<div class="arrow j-arrow">',
-				'<div class="arrow_left" /></div>',
-				'<div class="arrow_right" /></div>',
+				'<div class="arrow_left" /><i>&lt;</i></div>',
+				'<div class="arrow_right" /><i>&gt;</i></div>',
 				"</div>",
 				'<div class="pointer j-pointer">',
 				'<ul class="pointer_list"></ul>',

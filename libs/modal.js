@@ -32,7 +32,7 @@
 			// 主结构
 			var htmlstr_outline = [
 				'<div class="modal_dialog">',
-				'<i class="modal_close"></i>',
+				'<i class="modal_close">&times;</i>',
 				"<img />",
 				"</div>"
 			];
@@ -62,7 +62,8 @@
 		open: function(file) {
 			$(this.node)
 				.css({
-					display: "block"
+					display: "block",
+					zIndex: 100
 				})
 				.find("img")
 				.eq(0)
@@ -70,7 +71,8 @@
 		},
 		close: function() {
 			$(this.node).css({
-				display: "none"
+				display: "none",
+				zIndex: -1
 			});
 		}
 	};
