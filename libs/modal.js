@@ -23,12 +23,13 @@
 			status: 0 // 0关/1开
 		};
 		this.subscriber = {};
+		this.rootnode = null;
 		this.node = null;
 	};
 	Modal.prototype = {
 		constructor: Modal,
 		/* 构建界面 */
-		buildUI: function(context) {
+		buildUI: function() {
 			// 主结构
 			var htmlstr_outline = [
 				'<div class="modal_dialog">',
@@ -41,7 +42,7 @@
 			node_modal.innerHTML = htmlstr_outline.join("");
 
 			// 渲染节点
-			this.render(node_modal, context);
+			this.render(node_modal, this.rootnode);
 		},
 		/* 渲染 */
 		render: function(htmlNode, context) {
@@ -50,7 +51,7 @@
 			this.node = htmlNode;
 		},
 		/* 各种钩子 */
-		componentDidMount: function(context) {
+		componentDidMount: function() {
 			var that = this;
 
 			$(this.node)
@@ -85,6 +86,7 @@
 	$.fn.extend({
 		modal: function(option) {
 			var instance = new Modal(option);
+			instance.rootnode = this;
 
 			instance.buildUI(this);
 			instance.componentDidMount();

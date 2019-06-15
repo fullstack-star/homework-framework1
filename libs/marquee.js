@@ -21,25 +21,30 @@
 			autoplay: 0, // 自动播放时间（秒）
 			pointer: true // 指示器
 		};
-		// 实例的配置信息
+		/*
+		 * 实例的属性
+		 */
+		// 配置信息
 		this.option = $.extend(true, {}, _option, option);
-		// 实例的数据信息
+		// 数据信息
 		this.data = {
-			list: [], // 图片路径列表
+			list: [], // 图片列表
 			index: 0 // 指示器序号
 		};
-		// 实例的订阅列表
+		// 订阅列表
 		this.subscriber = {};
-		// 实例的dom节点
+		// dom节点
 		this.node = null;
-		// 实例的计数器
+		// 父级dom节点
+		this.rootnode = null;
+		// 计数器
 		this.timer = {};
 	};
 	Marquee.prototype = {
 		constructor: Marquee,
 		/* 获取DOM模板中的原始数据 */
-		getTplData: function(context) {
-			var list = $(context).find("img"),
+		getTplData: function() {
+			var list = $(this.rootnode).find("img"),
 				that = this;
 			list.each(function(i) {
 				window.Array.prototype.push.call(
@@ -50,7 +55,7 @@
 		},
 
 		/* 构建界面 */
-		buildUI: function(context) {
+		buildUI: function() {
 			var that = this;
 			// 主结构
 			var htmlstr_outline = [
@@ -112,7 +117,7 @@
 					});
 				});
 			// 渲染节点
-			this.render(node_slide, context);
+			this.render(node_slide, this.rootnode);
 		},
 		/* 渲染 */
 		render: function(htmlNode, context) {
@@ -150,9 +155,9 @@
 				.addClass("z-active");
 		},
 		/* 各种钩子 */
-		componentDidMount: function(context) {
+		componentDidMount: function() {
 			var that = this,
-			data = that.data;
+				data = that.data;
 
 			$(this.node)
 				.find(".j-arrow")
@@ -216,10 +221,11 @@
 	$.fn.extend({
 		marquee: function(option) {
 			var instance = new Marquee(option);
+			instance.rootnode = this;
 
-			instance.getTplData(this);
-			instance.buildUI(this);
-			instance.componentDidMount(this);
+			instance.getTplData();
+			instance.buildUI();
+			instance.componentDidMount();
 
 			return instance;
 		}
