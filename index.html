@@ -1,6 +1,86 @@
-<div id="marquee">
-  <img>
-  <img>
-  <img>
-</div>
-<script src="./libs/jquery.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>轮播组件 - jQuery插件 - 面向DOM编程</title>
+	<!-- css 重置样式表 -->
+	<link rel="stylesheet" href="./css/normalize.css" />
+	<!-- 插件样式表 -->
+	<link rel="stylesheet" href="./libs/marquee.css" />
+	<link rel="stylesheet" href="./libs/modal.css" />
+	<!-- 业务样式表 -->
+	<link rel="stylesheet" href="./css/main.css" />
+</head>
+
+<body>
+	<h2 class="title">轮播组件练习 - 编写jQuery插件</h2>
+
+	<!-- 控制面板-测试用途 -->
+	<div class="control j-control">
+		<dl class="j-control-width">
+			<dt>布局宽度：</dt>
+			<dd data-value=300>
+				<button class="btn">300px</button>
+			</dd>
+			<dd data-value=600>
+				<button class="btn">600px</button>
+			</dd>
+			<dd data-value=1200>
+				<button class="btn">1200px</button>
+			</dd>
+		</dl>
+		<dl class="j-control-height">
+			<dt>布局高度：</dt>
+			<dd data-value=100>
+				<button class="btn">100px</button>
+			</dd>
+			<dd data-value=300>
+				<button class="btn">300px</button>
+			</dd>
+			<dd data-value=600>
+				<button class="btn">600px</button>
+			</dd>
+		</dl>
+		<dl class="j-control-operate">
+			<dt>模拟操作：</dt>
+
+			<dd data-value="prev">
+				<button class="btn">向前翻页</button>
+			</dd>
+			<dd data-value="next">
+				<button class="btn">向后翻页</button>
+			</dd>
+			<dd data-value="click">
+				<button class="btn">点击图片</button>
+			</dd>
+		</dl>
+	</div>
+
+	<div class="container">
+		<div class="container_slide" id="marquee">
+			<!-- 模板结构 -->
+			<img data-src="./assets/horizontal.jpg">
+			<img data-src="./assets/vertical.jpg">
+			<img data-src="./assets/square.jpg">
+			<img data-src="./assets/transparent.png">
+		</div>
+		<br>
+		<div class="container_slide" id="marquee2">
+				<!-- 模板结构 -->
+				<img data-src="./assets/vertical.jpg">
+				<img data-src="./assets/horizontal.jpg">
+				<img data-src="./assets/transparent.png">
+				<img data-src="./assets/square.jpg">
+			</div>
+	</div>
+	<!-- 脚本 -->
+	<script src="./libs/jquery.js"></script>
+	<script src="./libs/marquee.js"></script>
+	<script src="./libs/modal.js"></script>
+	<script src="./js/main.js"></script>
+</body>
+
+</html>
