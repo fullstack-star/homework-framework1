@@ -1,0 +1,48 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+#marquee{
+    position: relative;
+    width: 200px;
+    overflow: hidden;
+    transition: hover .5s;
+    margin: 100px;
+}
+.container{
+    width: 2000px;
+    height: 140px;
+    transform: translateX(0);
+}
+.container .item{
+    height: inherit;
+    width: 195px;
+    display: inline-block;
+}
+.container .item img{
+    height: inherit;
+    width: 195px;
+}
+#marquee .prev{
+    position: absolute;
+    top: 45%;
+    left: 2px;
+    background-image: url(../imgs/left.png);
+    width: 32px;
+    height: 32px;
+    display: none;
+    transition: display .5s;
+}
+#marquee .next{
+    position: absolute;
+    top: 45%;
+    right: 2px;
+    background-image: url(../imgs/right.png);
+    width: 32px;
+    height: 32px;
+    display: none;
+    transition: display .5s;
+}
+#marquee:hover .prev, #marquee:hover .next{ 
+    display: block;
+}
