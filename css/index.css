@@ -1,0 +1,58 @@
+#marquee{
+  position: relative;
+  width: 600px;
+  height: 150px;
+  margin: 0 auto;
+  margin-top: 200px;
+  overflow: hidden;
+}
+div{
+  margin: 0;
+  padding: 0;
+}
+#marquee .wrap{
+  position: relative;
+  display: flex;
+  height: 100%;
+}
+#marquee .wrap > a,#marquee .wrap img{
+  display: block;
+  flex: 1;
+  height: 100%;
+}
+#marquee .wrap img{
+  width: 100%;
+}
+#marquee>span{
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 32px;
+  font-weight: 900;
+  color: #fff;
+  user-select: none;
+  cursor: pointer;
+}
+#marquee>span:last-child{
+  left: auto;
+  right: 10px;
+}
+#marquee .dots {
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+#marquee .dots > span {
+  background: black;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  margin-left: 10px;
+  cursor: pointer;
+}
+#marquee .dots > span.active {
+  background: red;
+}
