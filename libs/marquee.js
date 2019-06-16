@@ -1,37 +1,22 @@
 $.fn.marquee = function(opt) {
-  console.log(opt)
   var me = this
   var canSwiper = true // 防止动画没有执行完毕就开始下一个动画
   var index = 0
-  var defaultPlayTime = opt.auto || 500
-  var speed = opt.speed || 300
+  var options = Object.assign({auto: 500, speed}, opt)
   var childrens = me.find('.wrap').children()
   var itemWidth = me.width()
   var timer = null
 
   init()
-  if (opt.showPage) {
-    addPage()
-  }
-  if (opt.showDot) {
-    addDot()
-  }
-  if (opt.auto) {
-    autoPlay()
-  }
   function autoPlay () {
     timer = setInterval(function() {
-      index++
-      clearInterval(timer)
-      render()
-    }, defaultPlayTime)
+      handlerChange('next')
+    }, options.auto)
   }
   function addPage () {
-    var pageEl = '<span class=prev><<</span class=next><span class=next>>></span>'
-    me.append(pageEl)
+    me.append('<span class=prev><<</span class=next><span class=next>>></span>')
     me.find('span').click(function() {
-      var cssName = $(this).attr('class')
-      handlerChange(cssName)
+      handlerChange($(this).attr('class'))
     })
   }
   function addDot () {
@@ -45,6 +30,9 @@ $.fn.marquee = function(opt) {
     let endChild = $(childrens[childrens.length-1]).clone()
     me.find('.wrap').append(firstChild).append(endChild)
     me.find('.wrap').css('width', itemWidth * (childrens.length+2) + 'px')
+    opt.showPage && addPage()
+    opt.showDot && showDot()
+    opt.autoPlay && autoPlay()
   }
   function handlerChange (type) {
     clearInterval(timer)
@@ -76,10 +64,7 @@ $.fn.marquee = function(opt) {
         $(dot).addClass('active')
       }
     })
-    // console.log(dots)
-    // $(dots[index]).addClass('active')
-    // me.find('.dots').find('span')[index].addClass('active')
-    me.find('.wrap').animate({left: -index*itemWidth + 'px'}, speed, function(){
+    me.find('.wrap').animate({left: -index*itemWidth + 'px'}, options.speed, function(){
       if (opt.auto) {
         autoPlay()
       }
