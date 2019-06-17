@@ -12,9 +12,10 @@ const arrowRight =
 $.fn.marquee = function (options = {}) {
   const { time = 1000 } = options
   const _this = $(this)
+  const width = _this.width()
   let index = 0
-  let length = _this.find('img').length
-  let timer = null
+  let numOfImg = _this.find('img').length
+  let timer = null, wrapper = null
   // 初始化dom
   init()
   // 轮播
@@ -30,7 +31,7 @@ $.fn.marquee = function (options = {}) {
   // hover
   _this.on('mouseenter', (e) => {
     if (timer) {
-      clearInterval(timer)
+      clearTimeout(timer)
       timer = null
     }
     _this.find('button').show()
@@ -57,39 +58,39 @@ $.fn.marquee = function (options = {}) {
       return tag
     })
     _this.append($('<div class="img-wrapper"></div>').append(doms))
-    const wrapper = $('.img-wrapper')
+    wrapper = $('.img-wrapper')
     wrapper.find('a:eq(0)').clone().appendTo(wrapper)
     // 添加箭头
     _this.append(arrowLeft)
     _this.append(arrowRight)
   }
-  function right () {
-    const wrapper = $('.img-wrapper')
-    const width = _this.width()
+  function right() {
     index++
+    render()
+  }
+  function left() {
+    index--
+    render()
+  }
+  function render() {
+    if (wrapper.is(":animated")) {
+      return;
+    }
+    if (index < 0) {
+      index = numOfImg - 1
+      wrapper.css("left", -(width * numOfImg));
+    }
     wrapper.stop(true, true).animate({left: -(width * index)}, 300, '', function() {
-      if (index > length - 1) {
+      if (index > numOfImg - 1) {
         index = 0
         $(this).css("left", 0);
       }
     })
   }
-  function left () {
-    const wrapper = $('.img-wrapper')
-    const width = _this.width()
-    if (wrapper.is(":animated")) {
-      return;
-    }
-    index--
-    if (index < 0) {
-      index = length - 1
-      wrapper.css("left", -(width * length));
-    }
-    wrapper.stop(true, true).animate({left: -(width * index)}, 300)
-  }
-  function start () {
-    timer = setInterval(() => {
+  function start() {
+    timer = setTimeout(() => {
       right()
+      start()
     }, time)
   }
 }
