@@ -12,9 +12,11 @@ const arrowRight =
 $.fn.marquee = function (options = {}) {
   const { time = 1000 } = options
   const _this = $(this)
-  const width = _this.width()
+  const $imgs = _this.find('img')
+  const $firstImg = $($imgs[0])
+  const width = $firstImg.width()
   let index = 0
-  let numOfImg = _this.find('img').length
+  let numOfImg = $imgs.length
   let timer = null, wrapper = null
   // 初始化dom
   init()
@@ -44,7 +46,6 @@ $.fn.marquee = function (options = {}) {
   
   function init() {
     // 处理图片结构
-    const $imgs = _this.find('img')
     _this.empty()
     const doms = Array.from($imgs).map((item, index) => {
       const tag = document.createElement('a')
@@ -57,7 +58,7 @@ $.fn.marquee = function (options = {}) {
         .append(item)
       return tag
     })
-    _this.append($('<div class="img-wrapper"></div>').append(doms))
+    _this.append($(`<div class="img-wrapper"></div>`).append(doms))
     wrapper = $('.img-wrapper')
     wrapper.find('a:eq(0)').clone().appendTo(wrapper)
     // 添加箭头
